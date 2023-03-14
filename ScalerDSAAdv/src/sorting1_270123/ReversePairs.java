@@ -1,85 +1,59 @@
 package sorting1_270123;
-
+// https://www.scaler.com/academy/mentee-dashboard/class/50136/homework/problems/4192/hints?navref=cl_pb_nv_tb
 public class ReversePairs {
 	public int solve(int[] A) { // O(n2) so TLE
 		int count=0;
 		for(int i=0; i<A.length-1; i++) {
 			for(int j=i+1; j<A.length; j++) {
-				if((A[i] == A[j]) && (A[i] == 2000000000)) continue;
-				//if(A[i]==A[j]) continue;
-				int temp = 2*A[j];
-				if(A[i]>temp) count++;
+				/*
+				 * if((A[i] == A[j]) && (A[i] == 2000000000)) continue; //if(A[i]==A[j])
+				 * continue; int temp = 2*A[j]; if(A[i]>temp) count++;
+				 */
+				
+				 if(A[i] > 2*1L*A[j]) count++;
 			}
 		}
 		return count;
     }
 	int reversePair = 0;
 
-    public int solve2(int[] A) { // not working from dis
+	public int solveScalerSol(int[] A) {
         int n = A.length;
-        mergeSort(A,0,n-1);
-        return reversePair;
+        return mergesort_and_countScalerSol(A, 0, n - 1);
     }
-    //merge sort function to split the array into individual elements
-    public void mergeSort(int[] A, int s, int e){
-        if(s >= e) return;
-        int mid = (s+e)/2;
-        mergeSort(A,s,mid);
-        mergeSort(A,mid+1,e);
-        merge(A,s,mid,e);
-    }
-
-    //main merge function
-    public void merge(int[] A, int s, int mid, int e){
-        int n1 = mid - s + 1; //number of elements in array1
-        int n2 = e - mid;//number of elements in array2
-        int A1[] = new int[n1];
-        int A2[] = new int[n2];
-        int index = 0;
-
-        //filling A1 and A2
-        for(int i = s; i <= mid; i++)
-            A1[index++] = A[i];
-
-        index = 0;
-        for(int i = mid+1; i <= e; i++)
-            A2[index++] = A[i];
-       
-        int i = 0, j = 0; // i and j referncing A1 and A2 array respectively
-
-        //checking A[i] > 2*A[j] remember merge didnot happened yet
-        while(i < n1 && j < n2){
-            if((long)A1[i] > 2 * (long)A2[j]){ //handle overflow
-                reversePair += n1-i;
-                j++;
-            }
+    public void mergeScalerSol(int a[], int start, int mid, int end) {
+        int n1 = (mid - start + 1);
+        int n2 = (end - mid);
+        int[] L = new int[n1], R = new int[n2];
+        for (int i = 0; i < n1; i++)
+            L[i] = a[start + i];
+        for (int j = 0; j < n2; j++)
+            R[j] = a[mid + 1 + j];
+        int i = 0, j = 0;
+        for (int k = start; k <= end; k++) {
+            if (j >= n2 || (i < n1 && L[i] <= R[j]))
+                a[k] = L[i++];
             else
-                i++;
+                a[k] = R[j++];
         }
-
-        //merging A1 and A2 in sorted manner
-
-        i = 0; j = 0; // i and j referncing A1 and A2 array respectively
-        index = s; // important because using the original input array
-
-        while(i < n1 && j < n2){
-            if(A1[i] < A2[j]){ // equals to condition for equal elements
-                A[index++] = A1[i++];
+    }
+    public int mergesort_and_countScalerSol(int a[], int start, int end) {
+        if (start < end) {
+            int mid = (start + end) / 2;
+            // divide the array into two half and sort them
+            int count = mergesort_and_countScalerSol(a, start, mid) + 
+            		mergesort_and_countScalerSol(a, mid + 1, end);
+            // count the number of pairs
+            int j = mid + 1;
+            for (int i = start; i <= mid; i++) {
+                while (j <= end && 1l * a[i] > a[j] * 2l)
+                    j++;
+                count += j - (mid + 1);
             }
-            else{
-                A[index++] = A2[j++];
-            }
-        }
-        //if some elements still remaining after traversal
-        if(i < n1){
-            while(i < n1){
-                A[index++] = A1[i++];
-            }
-        }else{
-            while(j < n2){
-                A[index++] = A2[j++];
-            }
-        }
+            mergeScalerSol(a, start, mid, end);
+            return count;
+        } else
+            return 0;
     }
     public int solve3(int[] A) { // this one working
         return invCount(A , 0 , A.length - 1);
@@ -147,15 +121,30 @@ public class ReversePairs {
 		// TODO Auto-generated method stub
 		ReversePairs rp = new ReversePairs();
 		int[] A = {1, 3, 2, 3, 1};
+		System.out.println(rp.solve(A)); // 2
+		System.out.println(rp.solveScalerSol(A)); // 2
+		A = new int[] {1, 3, 2, 3, 1};
 		System.out.println(rp.solve3(A)); // 2
 		int[] B = {4, 1, 2};
+		System.out.println(rp.solve(B)); // 1
+		System.out.println(rp.solveScalerSol(B)); // 3 -- 1
+		B = new int[]{4, 1, 2};
 		System.out.println(rp.solve3(B)); // 1
 		int[] C = { 2000000000, 2000000000, -2000000000 };
+		System.out.println(rp.solve(C)); // 2
+		System.out.println(rp.solveScalerSol(C)); // 2
+		C = new int[]{ 2000000000, 2000000000, -2000000000 };
 		System.out.println(rp.solve3(C)); // 2
 		int[] D = {769, -71, 599, -1438, -530, -512, 1680, 1907, -301, 492, -844, 1765, -188, 685, -1879, -699, -990, 1022, 459, 528, -930, 1051, 1412, -1598, 245, -480, 1979, 1212, 1177, 447, -509, 881, 1968, -1603, -429, 1165, 405, 426, -1610, 931, -835, -1156, 1273, -143, -940, 199, -1886, -1646, 390, -1349, -256, -256, -103, -135, 637, -605, 55, -1805, -17, -229, 1162, 288, -818, -922, 32, -1032, -1823, -1874, -1650, 146, 721, 1586, 1969, 1720, -993, -1137, -1233, -1629, -879, -277, 444, -1191, -1273, 127, 1785, 1407, -1460, 414, -1578, -1348, 72, -794, 632, 877, 338, 1921, -650, -1314, 1187, -40};
-		System.out.println(rp.solve3(D)); // 2761 expected 2760
+		System.out.println(rp.solve(D)); // 2761
+		System.out.println(rp.solveScalerSol(D)); // 2761
+		D = new int[]{769, -71, 599, -1438, -530, -512, 1680, 1907, -301, 492, -844, 1765, -188, 685, -1879, -699, -990, 1022, 459, 528, -930, 1051, 1412, -1598, 245, -480, 1979, 1212, 1177, 447, -509, 881, 1968, -1603, -429, 1165, 405, 426, -1610, 931, -835, -1156, 1273, -143, -940, 199, -1886, -1646, 390, -1349, -256, -256, -103, -135, 637, -605, 55, -1805, -17, -229, 1162, 288, -818, -922, 32, -1032, -1823, -1874, -1650, 146, 721, 1586, 1969, 1720, -993, -1137, -1233, -1629, -879, -277, 444, -1191, -1273, 127, 1785, 1407, -1460, 414, -1578, -1348, 72, -794, 632, 877, 338, 1921, -650, -1314, 1187, -40};
+		System.out.println(rp.solve3(D)); // 2761 
 		int[] E = {1, 3, 2, 3, 1};
-		System.out.println(rp.solve(E));
+		System.out.println(rp.solve(E)); // 2
+		System.out.println(rp.solveScalerSol(E)); // 2
+		E = new int[]{1, 3, 2, 3, 1};
+		System.out.println(rp.solve(E)); // 2
 				
 	}
 
