@@ -79,10 +79,14 @@ public class MissingNaturalNumber {
 			  while(A[i] != (i+1) && A[i]>0 && A[i]<=A.length) {
 				  int x = A[i];
 				  if(x == A[x-1]) break;
-				  swap(A[i], A[x-1]);
-				  System.out.println(i);
+				  // swap(A[i], A[x-1]); // swap is not happening so problem
+				  int temp = A[i];
+					A[i] = A[x-1];
+					A[x-1]= temp;
+				  //System.out.println(i);
+				  //i++;
 			  }
-			  System.out.println(i);
+			  //System.out.println(i);
 		}
 		for(int i=0; i<A.length; i++) {
 			if(A[i] != i+1) return i+1;
@@ -105,7 +109,7 @@ public class MissingNaturalNumber {
 		ArrayList<Integer> ar = new ArrayList<>();
 		ar.add(4); ar.add(3); ar.add(7); ar.add(6); ar.add(9); ar.add(1); ar.add(8); ar.add(3);
 		System.out.println(mnn.firstMissingPositive(ar)); // 2
-		//System.out.println(mnn.missingNumberBestApproach(D));
+		System.out.println(mnn.missingNumberBestApproach(D)); // 2
 		System.out.println(mnn.missingNumber(A)); // 4
 		System.out.println(mnn.missingNumber(B)); // 5
 		System.out.println(mnn.missingNumber(C)); // 6
