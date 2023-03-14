@@ -39,7 +39,6 @@ public class NonOverlappingIntervalInsert { // not getting correct
 				I[0] = Math.min(I[0], A[i][0]);
 				I[1] = Math.max(I[1], A[i][1]);
 			}
-			
 		}
 		//System.out.println(I[0] +" "+ I[1]);
 	}
@@ -130,13 +129,17 @@ public class NonOverlappingIntervalInsert { // not getting correct
 		int[][] B = {{1, 3}, {4, 7}, {10, 14}, {16, 19}, {21, 24}, {27, 30}, {32, 35}, {38, 41}};
 		int[] J =  {25, 26};
 		//noii.insertInterval(A, I);
+		System.out.println("--New--");
 		noii.insertIntervalPrint(A, I);
+		System.out.println("--New--");
 		noii.insertIntervalPrint(B, J);
-		int[][] C = {{1,3}, {6,9}};
+		int[][] C = {{1,3}, {6,9}, {10, 11}};
 		int[] X = {2,5};
-		int[][] D = {{1,3}, {6,9}};
+		int[][] D = {{1,3}, {6,9}, {10, 11}};
 		int[] Y = {2,6};
+		System.out.println("--New--");
 		noii.insertIntervalPrint(C, X);
+		System.out.println("--New--");
 		noii.insertIntervalPrint(D, Y);
 		Interval in = new Interval(1, 3);
 		Interval in1 = new Interval(4, 7);
@@ -150,11 +153,42 @@ public class NonOverlappingIntervalInsert { // not getting correct
 		intervals.add(in); intervals.add(in1); intervals.add(in2); intervals.add(in3);
 		intervals.add(in4); intervals.add(in5); intervals.add(in6);
 		ArrayList<Interval> finalIn = noii.insert(intervals, in7);
+		System.out.println("--New--");
 		for(int i=0; i<finalIn.size(); i++) {
 			System.out.println(finalIn.get(i).start + " " +finalIn.get(i).end);
 		}
 		
 	}
-
 }
-
+/*
+ * --New--
+1 3 0
+4 7 1
+10 24 5
+27 30 5 5
+32 35 5 6
+38 41 5 7
+--New--
+1 3 0
+4 7 1
+10 14 2
+16 19 3
+21 24 4
+25 26 5
+27 30 5 5
+32 35 5 6
+38 41 5 7
+--New--
+1 5 1
+6 9 1 1
+10 11 1 2
+--New--
+1 9 2
+10 11 2 2
+--New--
+1 3
+4 7
+10 24
+27 30
+32 35
+*/

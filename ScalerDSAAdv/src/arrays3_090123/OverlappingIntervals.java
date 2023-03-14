@@ -1,12 +1,14 @@
 package arrays3_090123;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 // https://www.scaler.com/academy/mentee-dashboard/class/50128/assignment/problems/61?navref=cl_tt_nv
 public class OverlappingIntervals {
 
 	public void sortedOverlappingIntervals(int[][] A) { // O(n) O(1)
+		Arrays.sort(A[0]);
 		int l = A[0][0], r = A[0][1];
 		for(int i=0; i<A.length; i++) {
 			if(A[i][0]<=r) {
@@ -90,7 +92,11 @@ public class OverlappingIntervals {
 		// TODO Auto-generated method stub
 		OverlappingIntervals oli = new OverlappingIntervals();
 		int[][] A = {{0,2}, {1,4}, {5,6}, {6,8}, {7, 10}, {8, 9}, {12, 14}};
+		System.out.println("--New--");
 		oli.sortedOverlappingIntervals(A); // 0 4  5 10  12 14
+		int[][] B = {{4, 100}, {48, 94}, {16, 21}, {58, 71}, {36, 53}, {49, 68}, {18, 42}, {37, 90}, {68, 75}, {6, 57}, {25, 78}, {58, 79}, {18, 29}, {69, 94}, {5, 31}, {10, 87}, {21, 35}, {1, 32}, {7, 24}, {17, 85}, {30, 95}, {5, 63}, {1, 17}, {67, 100}, {53, 55}, {30, 63}, {7, 76}, {33, 51}, {62, 68}, {78, 83}, {12, 24}, {31, 73}, {64, 74}, {33, 40}, {51, 63}, {17, 31}, {14, 29}, {9, 15}, {39, 70}, {13, 67}, {27, 100}, {10, 71}, {18, 47}, {48, 79}, {70, 73}, {44, 59}, {68, 78}, {24, 67}, {32, 70}, {29, 94}, {45, 90}, {10, 76}, {12, 28}, {31, 78}, {9, 44}, {29, 83}, {21, 35}, {46, 93}, {66, 83}, {21, 72}, {29, 37}, {6, 11}, {56, 87}, {10, 26}, {11, 12}, {15, 88}, {3, 13}, {56, 70}, {40, 73}, {25, 62}, {63, 73}, {47, 74}, {8, 36} };
+		System.out.println("--New--");
+		oli.sortedOverlappingIntervals(B);
 		Interval in = new Interval(0, 2);
 		Interval in1 = new Interval(1, 4);
 		Interval in2 = new Interval(5, 6);
@@ -102,6 +108,7 @@ public class OverlappingIntervals {
 		intervals.add(in); intervals.add(in1); intervals.add(in2); intervals.add(in3);
 		intervals.add(in4); intervals.add(in5); intervals.add(in6);
 		ArrayList<Interval> finalIn = oli.merge(intervals);
+		System.out.println("--New--");
 		for(int i=0; i<finalIn.size(); i++) {
 			System.out.println(finalIn.get(i).start + " " +finalIn.get(i).end);
 		}
