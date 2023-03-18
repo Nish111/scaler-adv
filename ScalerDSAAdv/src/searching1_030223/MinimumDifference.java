@@ -17,7 +17,7 @@ public class MinimumDifference {
 		}
 		return count;
     }
-	public int solveVideo(int A, int B, int[][] C) { // sort each row
+	public int solveVideo(int A, int B, int[][] C) { // not working
 		int min = Integer.MAX_VALUE;
 		for(int i=0; i<C.length; i++) {
 			Arrays.sort(C[i]);
@@ -30,7 +30,7 @@ public class MinimumDifference {
 			}
 		}
 		
-		return 0;
+		return min;
     }
 	public int upperBound(int i, int[] A) {
 		int temp = Integer.MAX_VALUE;
@@ -113,21 +113,60 @@ public class MinimumDifference {
 		}
 		return Math.min(checkValue - lesserValue, greaterValue - checkValue);
 	}
+	public int solveScalerSol(int A, int B, int[][] C) {
+	      int x;
+	      int ans = 1000000000; // Initialize answer as a large number
+	      int lb;
+	      for (int i = 0; i < A; i++) {
+	         Arrays.sort(C[i]); // Sort each row of matrix
+	      }
+	      for (int i = 0; i < A - 1; i++) {
+	         for (int j = 0; j < B; j++) {
+	            lb = lower_boundScalerSol(C[i + 1], C[i][j]); // check for next element as in soltion
+	            if (lb != B) {
+	               ans = Math.min(ans, Math.abs(C[i][j] - C[i + 1][lb])); // Update answer
+	            }
+	            if (lb != 0) {
+	               ans = Math.min(ans, Math.abs(C[i][j] - C[i + 1][lb - 1]));
+	            }
+	         }
+	      }
+	      return ans;
+	   }
+
+	   // function used to find element index just greater than or equal to val
+	   public int lower_boundScalerSol(int a[], int val) {
+	      int low = 0, high = a.length - 1, ans = a.length;
+	      while (low <= high) {
+	         int mid = (high - low) / 2 + low;
+	         if (a[mid] < val) {
+	            low = mid + 1;
+	         } else {
+	            ans = mid;
+	            high = mid - 1;
+	         }
+	      }
+	      return ans;
+	   }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MinimumDifference md = new MinimumDifference();
 		int[][] A = {{8,4}, {6,8}};
 		System.out.println(md.solveVideo(2, 2, A)); // 0
 		System.out.println(md.solveBrute(2, 2, A)); // 0
+		System.out.println(md.solve(2, 2, A)); // 0
 		int[][] B = {{7,3}, {2,1}, {4,9}};
-		System.out.println(md.solveVideo(3, 2, B)); // 0
+		System.out.println(md.solveVideo(3, 2, B)); // 1
 		System.out.println(md.solveBrute(3, 2, B)); // 1
+		System.out.println(md.solve(3, 2, B)); // 1
 		int[][] C = {{9,4,3,6}, {7,5,2,1}, {1,9,3,4}, {6,4,5,8}};
 		System.out.println(md.solveVideo(3, 2, C)); // 0
 		System.out.println(md.solveBrute(3, 2, C)); // 0
+		System.out.println(md.solve(3, 2, C)); // 0
 		int[][] D = {{7,3}, {2,1}, {4,9}};
-		System.out.println(md.solveVideo(3, 2, D)); // 0
+		System.out.println(md.solveVideo(3, 2, D)); // 1
 		System.out.println(md.solveBrute(3, 2, D)); // 1
+		System.out.println(md.solve(3, 2, D)); // 1
 	}
 
 }
