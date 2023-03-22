@@ -42,6 +42,12 @@ public class VerticalOrderTraversal {
 			System.out.println();
 		}
 	}
+	public void printArrayList(ArrayList<ArrayList<Integer>> A) {
+		for(int i=0; i<A.size(); i++)
+			System.out.print(A.get(i)+" ");
+		System.out.println();
+		
+	}
 	static class PairScalerSol {
 	    TreeNode t;
 	    int x;
@@ -101,7 +107,7 @@ public class VerticalOrderTraversal {
 		two.left = three;
 		two.right = six;
 		ArrayList<ArrayList<Integer>>  A = vot.verticalOrderTraversal(four);
-				
+		vot.printArrayList(A);
 	}
 }
 class Pair<x, y> {
