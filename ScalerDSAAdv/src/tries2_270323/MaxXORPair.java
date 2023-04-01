@@ -25,6 +25,18 @@ public class MaxXORPair {
 		}
 		return res;
 	}
+	// approach 3 - insert element and then search
+		public int findMaxXORTrie2(int[] A) {
+			TrieNodeNum root = new TrieNodeNum();
+			int res=Integer.MIN_VALUE, ans=0;
+			for(int i=0; i<A.length; i++) {
+				insert(root, A[i]);
+				ans = A[i]^search(root, A[i]);
+				//System.out.println(ans);
+				res = Math.max(ans, res);
+			}
+			return res;
+		}
 	public void insert(TrieNodeNum root, int x) {
 		TrieNodeNum curr = root;
 		for(int i=30; i>=0; i--) {
@@ -58,6 +70,7 @@ public class MaxXORPair {
 		if(((n>>i)&1) == 1) return 1;
 		else return 0;
 	}
+	
 	static private class TrieNodeScalerSol {
         TrieNodeScalerSol left = null; // left points to 0 
         TrieNodeScalerSol right = null; // right points to 1
@@ -119,6 +132,7 @@ public class MaxXORPair {
 		int[] A = {9,8,10,7};
 		System.out.println(mxp.findMaxXORPair(A)); // 15
 		System.out.println(mxp.findMaxXORTrie(A)); // 15
+		System.out.println(mxp.findMaxXORTrie2(A)); // 15
 	}
 
 }
