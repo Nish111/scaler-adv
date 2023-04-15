@@ -70,6 +70,8 @@ public class ChlidrenAndCandy {
 		System.out.println(cac.findMinCandyGiven(F)); // 21
 		int[] G = {4,3,6,2};
 		System.out.println(cac.findMinCandyGiven(G)); // 6
+		int[] H = {6,5,4,3,2,1};
+		System.out.println(cac.findMinCandyGiven(H)); // 21
 	}
 
 }
