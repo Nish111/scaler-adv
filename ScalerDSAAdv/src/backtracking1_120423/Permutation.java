@@ -38,6 +38,34 @@ public class Permutation {
 			System.out.println();
 		}
 	}
+	private boolean[] marked;
+    private ArrayList < ArrayList < Integer >> res;
+    private ArrayList < Integer > A;
+    private int n;
+    public ArrayList < ArrayList < Integer >> permuteScalerSol(ArrayList < Integer > A) {
+        n = A.size();
+        marked = new boolean[n];
+        res = new ArrayList < > ();
+        this.A = A;
+        recScalerSol(0, new ArrayList < > ());
+        return res;
+    }
+    public void recScalerSol(int idx, ArrayList < Integer > temp) {
+        if (idx == n) {
+            res.add(new ArrayList < > (temp));
+            return;
+        }
+        // try all possible elements for the current position
+        for (int i = 0; i < n; i++) {
+            if (!marked[i]) {
+                marked[i] = true;
+                temp.add(A.get(i));
+                recScalerSol(idx + 1, temp);
+                marked[i] = false;
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Permutation p = new Permutation();
