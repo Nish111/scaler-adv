@@ -70,7 +70,7 @@ public class BSTInRange {
 		eight.right = twoone;
 		six.left = one;
 		six.right = seven;
-		System.out.println(bst.solve(eight, 2, 20));
+		System.out.println(bst.solve(eight, 2, 20)); // 3
 	}
 
 }
