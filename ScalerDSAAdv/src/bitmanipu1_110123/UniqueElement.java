@@ -3,7 +3,7 @@ package bitmanipu1_110123;
 import java.util.HashMap;
 import java.util.List;
 // https://www.scaler.com/academy/mentee-dashboard/class/50129/assignment/problems/195/submissions
-public class UniqueElement {
+public class UniqueElement { // Single Number 2  Single Number II
 
 	public int restThrice(int[] A) {
 		int ans = 0;
