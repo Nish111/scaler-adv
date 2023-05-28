@@ -7,15 +7,25 @@ import java.util.HashSet;
 
 public class AllGCDPair {
 
-	public int[] solve(int[] A) {
+	public int[] solve(int[] A) { // not working
 		
-		HashSet<Integer> hashSet = new HashSet<>();
+		HashSet<Integer> hs1 = new HashSet<>();
+		HashSet<Integer> hs2 = new HashSet<>();
 		for(int i=0; i<A.length-1; i++) {
-			int temp = gcd(A[i], A[i+1]);
-			hashSet.add(temp);
+			hs1.add(A[i]);
+			/*
+			 * if(A[i]!=1 & A[i+1]!=1) { int temp = gcd(A[i], A[i+1]); }
+			 */
+		}
+		if(hs1.contains(1)) hs1.remove(1);	
+		int[] temp=hs1.stream().mapToInt(Integer::intValue).toArray();
+		printArray(temp);
+		for(int i=0; i<temp.length-1; i++) {
+			int x = gcd(A[i], A[i+1]);
+			hs2.add(x);
 		}
 		
-		return hashSet.stream().mapToInt(Integer::intValue).toArray();
+		return hs2.stream().mapToInt(Integer::intValue).toArray();
     }
 	public int gcd(int A, int B) {
 		if(B==0) return A;
@@ -34,6 +44,7 @@ public class AllGCDPair {
 	            ans[i]=max;
 	            max=0;
 	        }
+	        printArray(ans);
 	        return ans;
 	    }
 	  public int gcdScalerSol(int A, int B) {
@@ -80,15 +91,20 @@ public class AllGCDPair {
 		int[] F = agp.solve2(E);
 		int[] G = {2,2,1,2,4,1,1,1,9};
 		int[] H = agp.solve2(G);
-		for(int i=0; i<B.length; i++) System.out.print(B[i]+" ");
-		System.out.println(); // 2 8 10
-		for(int i=0; i<D.length; i++) System.out.print(D[i]+" ");
-		System.out.println(); // 5 15
-		for(int i=0; i<F.length; i++) System.out.print(F[i]+" ");
-		System.out.println(); // 1 2 9 -- incorrect array E 
-		for(int i=0; i<H.length; i++) System.out.print(H[i]+" ");
-		System.out.println(); // 2 4 9 
+		int[] I = {1,31,1,1,1,1,14,2,1,1,1,2,22,1,11,1,1,1,1,23,1,1,11,1,11};
+		int[] J = agp.solve(I);
+		int[] K = agp.solve2(I);
+		printArray(J); // 1 2 --wrong
+		printArray(K); // 31 14 22 23 11 
+		printArray(B); // 2 8 10
+		printArray(D); // 5 15 
+		printArray(F); // 1 2 9 
+		printArray(H); // 2 4 9 
 		
+	}
+	private static void printArray(int[] B) {
+		for(int i=0; i<B.length; i++) System.out.print(B[i]+" ");
+		System.out.println();
 	}
 
 }
