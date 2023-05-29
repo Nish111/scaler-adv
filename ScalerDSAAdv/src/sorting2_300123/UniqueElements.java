@@ -2,7 +2,7 @@ package sorting2_300123;
 
 import java.util.Arrays;
 import java.util.HashMap;
-
+// https://www.scaler.com/academy/mentee-dashboard/class/50137/assignment/problems/1224?navref=cl_tt_lst_sl
 public class UniqueElements {
 
 	public int solve(int[] A) {
@@ -37,7 +37,7 @@ public class UniqueElements {
 		}
 		return count;
 	}
-	public int solve3(int[] A) {
+	public int solve3(int[] A) { // working
 		int count = 0;
 		Arrays.sort(A);
 		for(int i=0; i<A.length-1; i++) {
