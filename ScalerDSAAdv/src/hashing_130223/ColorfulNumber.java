@@ -18,6 +18,7 @@ public class ColorfulNumber {
 		int[] digits = new int[count];
 		for(int i=count-1; i>=0; i--) {
 			int temp = N%10;
+			if(temp==1 && count>1) return 0; // if 1 it will repeat
 			digits[i] = temp;
 			N=N/10;
 		}
