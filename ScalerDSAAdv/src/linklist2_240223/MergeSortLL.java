@@ -1,6 +1,6 @@
 package linklist2_240223;
 // https://www.scaler.com/academy/mentee-dashboard/class/50148/assignment/problems/34/?navref=cl_pb_nv_tb
-public class MergeSortLL {
+public class MergeSortLL { // Sort List
 
 	public ListNode mergeSortForLL(ListNode head) {
 		//printLinkedList(head);
