@@ -2,7 +2,7 @@ package stack1_010323;
 
 import java.util.Stack;
 // https://www.scaler.com/academy/mentee-dashboard/class/50150/assignment/problems/968?navref=cl_tt_nv
-public class DuplicateElements {
+public class DuplicateElements { // Double Character Trouble
 
 	public String removeConsecutiveDuplicate(String s) {
 		Stack<Character> s1 = new Stack<>();
