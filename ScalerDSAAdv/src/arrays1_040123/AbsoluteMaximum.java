@@ -19,7 +19,7 @@ public class AbsoluteMaximum {
 						for(int x=0; x<A.length; x++) {
 							//System.out.println(x+" "+i);
 							sum=sign[i]*A[x]+sign[j]*B[x]+sign[k]*C[x]+sign[l]*D[x]+x;
-							System.out.println(i+" "+j+" "+k+" "+l+" "+x+" "+sum);
+							//System.out.println(i+" "+j+" "+k+" "+l+" "+x+" "+sum);
 							max = Math.max(max, sum);
 							min = Math.min(min, sum);
 							result = Math.max(result, max-min);
