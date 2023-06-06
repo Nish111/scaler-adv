@@ -38,7 +38,7 @@ public class MatrixSearch {
 		}
 		return 0;
     }
-	public int searchMatrixScalerSol(int[][] A, int B) {
+	public int searchMatrixScalerSol(int[][] A, int B) { // optimal
         int n = A.length, m = A[0].length;
         //assume all elements are added to a list and after that it is sorted
         //last index will be n * m - 1
@@ -64,7 +64,7 @@ public class MatrixSearch {
 		System.out.println(ms.searchMatrix(A, 3)); // 1
 		int[][] B = {{5, 17, 100, 111}, {119, 120, 127, 131}};   
 		System.out.println(ms.searchMatrix(B, 3)); // 0
-		System.out.println(ms.searchMatrix(B, 300)); // 0
+		System.out.println(ms.searchMatrix(B, 127)); // 1
 		int[][] C = {{3}, {29},{36}, {63}, {67}, {72}, {74}, {78}, {85}};
 		System.out.println(ms.searchMatrix(C, 41)); // 0
 		int[][] D = {{2, 3, 4, 6}, {16, 19, 33, 36}, {37, 38, 38, 41},
