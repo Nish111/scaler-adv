@@ -30,6 +30,32 @@ public class AbsoluteMaximum {
 		}
 		return result;
     }
+	 public int solveScalerSol(int[] A, int[] B, int[] C, int[] D) {
+	        
+	        int m[] = new int[5];
+	        int d = 0, val = 0;
+	        int ans = 0;
+	        
+	        // Expand the given expression in 32 different ways
+	        for(int i = 0; i < 32; i++) {
+	            
+	            for(int j = 0; j < 5; j++) {
+	                m[j] = ((i >> j) & 1);
+	                if(m[j] == 0)   m[j] = -1;
+	            }
+	            
+	            int Min = Integer.MAX_VALUE;
+	            int Max = Integer.MIN_VALUE;
+	            for(int k = 0; k < A.length; k++) {
+	                val = A[k] * m[0] + B[k] * m[1] + C[k] * m[2] + D[k] * m[3] + k * m[4];
+	                Max = Math.max(Max, val);
+	                Min = Math.min(Min, val);
+	            }
+	            ans = Math.max(ans, Max - Min);
+	        }
+	        
+	        return ans;
+	    }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		AbsoluteMaximum am = new AbsoluteMaximum();
