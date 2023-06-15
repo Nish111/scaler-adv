@@ -1,4 +1,4 @@
-package graphs6_mst_160523;
+package graphs4_mst_160523;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
