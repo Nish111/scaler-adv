@@ -89,6 +89,8 @@ public class AllocateBooks {
 		System.out.println(ab.books(A, 2)); // 113
 		int[] B = {31, 14, 19, 75};
 		System.out.println(ab.books(B, 12)); // -1
+		int[] c = {12, 15, 78};
+		System.out.println(ab.books(c, 4));
 	}
 
 }
