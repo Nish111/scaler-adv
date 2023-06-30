@@ -26,7 +26,7 @@ public class CyclicPermutations { // do again
 		 */
 		
     }
-	public int solve1(String A, String B) {
+	public int solve1(String A, String B) { // working
 		String str = A + A; //add both the string so that cyclic count  can we check
 		int ans = 0;
 		for(int i = 1; i < str.length(); i++) {
@@ -115,7 +115,7 @@ public class CyclicPermutations { // do again
          }
         return Z;
     }
-    public int solve3(String A, String B) {
+    public int solve3(String A, String B) { // working
         // concatenate the strings
         B = B + B;
         String p = A + "$" + B;
@@ -141,6 +141,7 @@ public class CyclicPermutations { // do again
             }
         }
         // counting the number of occurences of A.length
+        printArray(lps);
         int count = 0;
         for(int j=0; j<N; j++){
             if(lps[j] == A.length() && j > 2*A.length())
