@@ -3,7 +3,7 @@ package zalgo_200223;
 import java.util.ArrayList;
 
 // https://www.scaler.com/academy/mentee-dashboard/class/50146/homework/problems/9462?navref=cl_tt_lst_sl
-public class SmallestPeriodOfString {
+public class SmallestPeriodOfString { // Period of a String
 
 	public int smallestPeriod(String S) {
 		int[] z = new int[S.length()];
