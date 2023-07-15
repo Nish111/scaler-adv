@@ -1,4 +1,4 @@
-package contest180223;
+package contest_180223;
 
 import java.util.ArrayList;
 // https://www.scaler.com/test/5c9c7e523b/#/problem_2
@@ -56,16 +56,6 @@ public class FantasticFour {
         G[2] = G[2]%2;
         if(G[2]==1) return -1;
         return res;
-       /* for(int i=0; i<arr.size(); i+=2) {
-        	int temp1 = arr.get(i);
-        	int temp2 = arr.get(i+1);
-        	if((temp1+temp2) %4 == 0) {
-        		res++;
-        	} else {
-        		
-        	}
-        }
-        return res;*/
     }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
