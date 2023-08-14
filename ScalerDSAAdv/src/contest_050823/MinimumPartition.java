@@ -1,5 +1,5 @@
 package contest_050823;
-
+// https://www.scaler.com/test/97de52ecc3/#/problem_1
 public class MinimumPartition {
     public int solve(int[] A) {
         int ans = 0;
