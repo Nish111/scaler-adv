@@ -6,7 +6,6 @@ import java.util.Arrays;
 public class AddOnetoNumber {
 
 	public int[] plusOne(int[] A) { // Scaler gave correct made my working for 0 9 9 9
-
 		int count = 0; // checking for preceding Zeroes
 		for (int i = 0; i < A.length && A.length > 1; i++) {
 			if (A[i] == 0) {
